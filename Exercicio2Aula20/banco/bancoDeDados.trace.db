@@ -1,0 +1,94 @@
+2024-08-09 08:19:24.802883-03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table funcionarios (\000d\000aid BIGINT NOT NULL AUTO_INCREMENT,\000d\000anome VARCHAR(100),\000d\000acracha VARCHAR(5),\000d\000adata_nascimento DATE\000d\000a)\000d\000a\000d\000a\000d\000a[*]INSERT INTO funcionarios (nome, cracha, data_nascimento) VALUES\000d\000a('Clara Almeida', '45678', '2000-10-10')"; SQL statement:
+create table funcionarios (
+id BIGINT NOT NULL AUTO_INCREMENT,
+nome VARCHAR(100),
+cracha VARCHAR(5),
+data_nascimento DATE
+)
+
+
+INSERT INTO funcionarios (nome, cracha, data_nascimento) VALUES
+('Clara Almeida', '45678', '2000-10-10') [42000-230]
+2024-08-09 08:32:35.535696-03:00 database: flush
+org.h2.message.DbException: General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/programas/ExerciciosJava/Exercicio2Aula20/banco/bancoDeDados.mv.db [2.3.230/7]" [50000-230]
+	at org.h2.message.DbException.get(DbException.java:212)
+	at org.h2.message.DbException.convert(DbException.java:407)
+	at org.h2.mvstore.db.Store.lambda$new$0(Store.java:122)
+	at org.h2.mvstore.MVStore.handleException(MVStore.java:1546)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:371)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:291)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:2035)
+	at org.h2.mvstore.db.Store.<init>(Store.java:133)
+	at org.h2.engine.Database.<init>(Database.java:326)
+	at org.h2.engine.Engine.openSession(Engine.java:92)
+	at org.h2.engine.Engine.openSession(Engine.java:222)
+	at org.h2.engine.Engine.createSession(Engine.java:201)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:344)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:124)
+	at org.h2.Driver.connect(Driver.java:59)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:683)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:230)
+	at Dominio.ConnectionFactory.obterConexao(ConnectionFactory.java:20)
+	at Main.main(Main.java:16)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/programas/ExerciciosJava/Exercicio2Aula20/banco/bancoDeDados.mv.db [2.3.230/7]" [50000-230]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:566)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	... 19 more
+Caused by: org.h2.mvstore.MVStoreException: The file is locked: C:/programas/ExerciciosJava/Exercicio2Aula20/banco/bancoDeDados.mv.db [2.3.230/7]
+	at org.h2.mvstore.DataUtils.newMVStoreException(DataUtils.java:996)
+	at org.h2.mvstore.SingleFileStore.lockFileChannel(SingleFileStore.java:143)
+	at org.h2.mvstore.SingleFileStore.open(SingleFileStore.java:117)
+	at org.h2.mvstore.SingleFileStore.open(SingleFileStore.java:81)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:286)
+	... 13 more
+2024-08-09 10:31:37.842019-03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE tb_contato\000d\000a(\000d\000atelefone INTEGER,\000d\000aemail VARCHAR2(50),\000d\000a[*])"; expected "identifier"; SQL statement:
+CREATE TABLE tb_contato
+(
+telefone INTEGER,
+email VARCHAR2(50),
+) [42001-230]
+2024-08-09 10:33:14.139969-03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "TB_ALUNO" not found; SQL statement:
+CREATE TABLE tb_contato
+(
+id INT NOT NULL,
+telefone INTEGER,
+email VARCHAR2(50),
+CONSTRAINT tb_contato_id_funcionario_fk FOREIGN KEY (id) REFERENCES TB_ALUNO(id)
+) [42102-230]
+2024-08-09 10:35:53.121786-03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Constraint "PRIMARY KEY | UNIQUE (ID)" not found; SQL statement:
+CREATE TABLE tb_contato
+(
+id INT NOT NULL,
+telefone INTEGER,
+email VARCHAR2(50),
+CONSTRAINT tb_contato_id_funcionario_fk FOREIGN KEY (id) REFERENCES FUNCIONARIOS(id)
+) [90057-230]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:644)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.command.ddl.AlterTableAddConstraint.tryUpdate(AlterTableAddConstraint.java:259)
+	at org.h2.command.ddl.AlterTableAddConstraint.update(AlterTableAddConstraint.java:74)
+	at org.h2.command.ddl.AlterTable.update(AlterTable.java:46)
+	at org.h2.command.ddl.CommandWithColumns.createConstraints(CommandWithColumns.java:83)
+	at org.h2.command.ddl.CreateTable.update(CreateTable.java:134)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:139)
+	at org.h2.command.Command.executeUpdate(Command.java:304)
+	at org.h2.command.Command.executeUpdate(Command.java:248)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:262)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:231)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1344)
+	at org.h2.server.web.WebApp.query(WebApp.java:1142)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1108)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1095)
+	at org.h2.server.web.WebThread.process(WebThread.java:190)
+	at org.h2.server.web.WebThread.run(WebThread.java:103)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2024-08-09 10:56:05.410751-03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "select * from tb_funcionarios \000d\000a[*]select * from tb_contato"; SQL statement:
+select * from tb_funcionarios 
+select * from tb_contato [42000-230]
