@@ -11,19 +11,16 @@ public class ConnectionFactory {
     String senha = "";
 
 
-    public ConnectionFactory() {
-    }
+    public Connection getConnection() {
+        String urlDeConexao = "jdbc:h2:./banco/bancoDeDados;AUTO_SERVER=TRUE";
+        String login = "sa";
+        String senha = "";
 
-    public Connection obterConexao() {
-        Connection conexao = null;
         try {
-            conexao = DriverManager.getConnection(urlConexao, usuario, senha);
-            System.out.println("Conectado!");
-
-        } catch(SQLException e) {
-            System.out.println("Erro ao conectar: "+e.getMessage());
+            return DriverManager.getConnection(urlDeConexao, login, senha);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
-        return conexao;
     }
 
 
