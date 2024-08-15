@@ -13,18 +13,19 @@ public class Main {
         Connection conexao = new ConnectionFactory().getConnection();
         System.out.println("Conectado!");
 
-       // String sqlInsert = "INSERT INTO tb_funcionarios (nome, cracha, data_nascimento) VALUES (?, ?, ?)";
-        String sqlInsertContato = "INSERT INTO tb_contato (id, telefone, email) VALUES (?, ?, ?)";
+        String sqlInsert = "INSERT INTO tb_funcionarios (nome, cracha, data_nascimento) VALUES (?, ?, ?)";
+        //String sqlInsertContato = "INSERT INTO tb_contato (id, telefone, email) VALUES (?, ?, ?)";
 
-        PreparedStatement comandoDeInsercao = conexao.prepareStatement(sqlInsertContato);
+        PreparedStatement comandoDeInsercao = conexao.prepareStatement(sqlInsert);
 
-//        comandoDeInsercao.setString(1, "Lucas Almeida");
-//        comandoDeInsercao.setString(2, "11111");
-//        comandoDeInsercao.setDate(3, toJavaSqlDate(LocalDate.of(2002, 06, 11)));
 
-        comandoDeInsercao.setString(1, "3");
-        comandoDeInsercao.setInt(2, 984067514);
-        comandoDeInsercao.setString(3, "lucas@gmail.com");
+        comandoDeInsercao.setString(1, "José Ribeiro");
+        comandoDeInsercao.setString(2, "2222");
+        comandoDeInsercao.setDate(3, Date.valueOf(LocalDate.of(2002, 06, 12)));
+
+//        comandoDeInsercao.setString(1, "3");
+//        comandoDeInsercao.setInt(2, 984067514);
+//        comandoDeInsercao.setString(3, "lucas@gmail.com");
 
 
         comandoDeInsercao.execute();
@@ -35,5 +36,4 @@ public class Main {
 
 
     }
-  //  private static Date toJavaSqlDate(LocalDate data) {return Date.valueOf(data);}
 }

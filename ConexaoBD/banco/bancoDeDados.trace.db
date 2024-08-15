@@ -1,0 +1,9 @@
+2024-08-14 08:26:51.926124-03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "FUNCIONARIOS" not found (this database is empty); SQL statement:
+INSERT INTO funcionarios (nome, cracha, data_nascimento) VALUES (?, ?, ?) [42104-230]
+2024-08-14 08:30:17.656486-03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "FUNCIONARIOS" not found (this database is empty); SQL statement:
+INSERT INTO funcionarios (nome, cracha, data_nascimento) VALUES (?, ?, ?) [42104-230]
+2024-08-14 08:36:49.865209-03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT *[*]FUNCIONARIOS"; SQL statement:
+SELECT *FUNCIONARIOS [42000-230]
